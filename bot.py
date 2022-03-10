@@ -9,6 +9,10 @@ bot = telebot.TeleBot(config.token)
 
 wikipedia.set_lang("ru")
 
+@bot.message_handler(commands=['start'])
+def welcome(message):
+    bot.send_message(message.chat.id, 'Здраствуйте, вас приветствует wikibot' + '\n' + 'Пожалуйста введите ваш запрос')
+
 @bot.message_handler(content_types=['text'])
 def text(message):
 	global search_results
